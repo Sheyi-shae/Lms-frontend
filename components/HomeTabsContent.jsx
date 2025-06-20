@@ -17,7 +17,7 @@ export default function HomeTabsContent({course,loading: initialLoading}) {
       );
       setCategories(res.data.data);
     } catch (error) {
-      console.error("Error fetching categories:", error);
+      //console.error("Error fetching categories:", error);
     } finally {
       setLoading(false);
     }

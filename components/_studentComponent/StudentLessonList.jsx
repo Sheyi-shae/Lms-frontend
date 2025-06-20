@@ -34,6 +34,7 @@ export function StudentLessonList({ course}) {
 
   const instructorName = course.instructor.name
   const instructorId = course.instructor.id
+  const instructorEmail = course.instructor.email
     
 
   // Fetch lessons + enrollment
@@ -62,7 +63,7 @@ export function StudentLessonList({ course}) {
       setIsEnrolling(true)
       await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/enroll/course/${course.id}`,
-     {instructorName,instructorId},
+     {instructorName,instructorId,instructorEmail},
         { withCredentials: true }
       )
       toast.success(`Successfully enrolled in course "${course.title}"`)

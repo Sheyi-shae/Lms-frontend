@@ -31,7 +31,7 @@ export default function CoursesSection({courses}) {
   }
 
   return (
-    <section id="courses" className="py-2 dark:bg-gray-800 sm:py-24">
+    <section id="courses" className="py-2 dark:bg-gray-800 sm:py-8">
       <div className="container  px-4 mx-auto sm:px-6">
         <motion.div
           className="text-center"
@@ -47,7 +47,7 @@ export default function CoursesSection({courses}) {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1  gap-8 mt-16 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1  gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -75,8 +75,8 @@ export default function CoursesSection({courses}) {
               </div>
 
               <div className="p-6">
-                <Link href={`/courses/${course.id}`}><h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{course.title}</h3></Link>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">by {course.instructor.name}</p>
+                <Link href={`/courses/${course.id}`}><h3 className="text-base font-semibold line-clamp-2 text-gray-900 dark:text-white mb-2">{course.title.toUpperCase()}</h3></Link>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">by {course.instructor.name}</p>
 
                 <div className="flex items-center gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
                   <div className="flex items-center gap-1">
@@ -93,19 +93,11 @@ export default function CoursesSection({courses}) {
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">$Free</span>
                   
-                  {!userLoading && user && user.role === 'student' ? (
-                    <span className="text-xs text-gray-500 dark:text-gray-400">
-                      {course.enrollments.some(enrollment => enrollment.studentId === user.id) ? <Button size="sm" disabled className="bg-emerald-600 hover:bg-emerald-700">
-                    Enrolled
-                  </Button> : <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
-                    Enroll Now
-                  </Button>}
-                    </span>
-                  ):(
+                 
                     <Link href={`/courses/${course.id}`}><Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
-                      More info
+                      Details
                     </Button></Link>
-                  )}
+                  
                   
                 </div>
               </div>

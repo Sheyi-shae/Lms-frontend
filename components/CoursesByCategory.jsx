@@ -70,8 +70,8 @@ export default function CoursesByCategory({courses,loading, categoryName}) {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{course.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm mb-4">by {course.instructor.name}</p>
+                 <Link href={`/courses/${course.id}`}><h3 className="text-base font-semibold line-clamp-2 text-gray-900 dark:text-white mb-2">{course.title.toUpperCase()}</h3></Link>
+                <p className="text-gray-600 dark:text-gray-400 font-light text-sm mb-4">by {course.instructor.name}</p>
 
                 <div className="flex items-center gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
                   <div className="flex items-center gap-1">
@@ -87,9 +87,9 @@ export default function CoursesByCategory({courses,loading, categoryName}) {
 
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">$Free</span>
-                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
-                    More info
-                  </Button>
+                  <Link href={`/courses/${course.id}`}><Button size="sm" className="bg-emerald-600 hover:bg-emerald-700">
+                    Details
+                  </Button></Link>
                 </div>
               </div>
             </motion.div>

@@ -91,10 +91,10 @@ export function MyLessonList({ lessons, onDeleteLesson, deleting }) {
                 {withCredentials: true});
 
                 setPreviousLesson(response.data.data);
-                console.log("Fetched previous lesson:", response.data.data);
+               // console.log("Fetched previous lesson:", response.data.data);
     
             } catch (error) {
-            console.error("Error fetching previous lesson:", error);
+          //  console.error("Error fetching previous lesson:", error);
             }finally {
            
 
@@ -159,7 +159,7 @@ export function MyLessonList({ lessons, onDeleteLesson, deleting }) {
     
                 toast.success(res.data?.message);
                 setIsEditDialogOpen(false);
-                console.log("Lesson updated successfully:", );
+              //  console.log("Lesson updated successfully:", );
     
     
     

@@ -24,7 +24,7 @@ export default function Home() {
       setCourses(res.data.course);
     }
     catch (error) {
-      console.error("Error fetching courses:", error);
+    
     } finally {
       setLoading(false);
     }

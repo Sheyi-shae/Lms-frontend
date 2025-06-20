@@ -70,14 +70,14 @@ export default function Page() {
   if (courseResult.status === "fulfilled") {
     setCourses(courseResult.value.data.course);
   } else {
-    console.warn("Failed to fetch courses:", courseResult.reason);
+   // console.warn("Failed to fetch courses:", courseResult.reason);
     setCourses([]);
   }
 
   if (categoryResult.status === "fulfilled") {
     setCategories(categoryResult.value.data.data);
   } else {
-    console.warn("Failed to fetch categories:", categoryResult.reason);
+   // console.warn("Failed to fetch categories:", categoryResult.reason);
     setCategories([]);
   }
 

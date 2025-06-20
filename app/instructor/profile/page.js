@@ -22,10 +22,10 @@ export default function ProfilePage() {
         )
 
         setUsers(response.data.user)
-        console.log("Fetching user data...", response.data.user)
+        //console.log("Fetching user data...", response.data.user)
       }
     } catch (err) {
-      console.error("Error fetching user:", err)
+      //console.error("Error fetching user:", err)
     } finally {
       setIsLoading(false)
     }

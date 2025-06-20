@@ -41,7 +41,7 @@ export default function DashboardCards() {
           
 
         } catch (error) {
-            console.error("Error fetching dashboard data:", error);
+           // console.error("Error fetching dashboard data:", error);
        
         } finally {
             setLoading(false);

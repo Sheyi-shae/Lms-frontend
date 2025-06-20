@@ -32,7 +32,7 @@ export default function DashboardDetails() {
 
               
               } catch (error) {
-                console.error("Error fetching dashboard data:", error);
+               // console.error("Error fetching dashboard data:", error);
               }finally {
                 setLoading(false);
             }

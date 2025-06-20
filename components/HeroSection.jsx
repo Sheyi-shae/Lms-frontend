@@ -58,7 +58,7 @@ export default function HeroSection() {
     <section className="relative  overflow-hidden bg-gradient-to-b from-white to-slate-50 dark:from-gray-900 dark:to-gray-950">
       <div className="absolute inset-0 bg-grid-slate-200/50 [mask-image:linear-gradient(0deg,white,transparent)] dark:bg-grid-slate-700/25"></div>
 
-      <div className="container relative px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:py-32">
+      <div className="container relative px-4 py-4 mx-auto sm:px-8 sm:py-8 lg:py-8">
         <motion.div
           className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2"
           initial="hidden"

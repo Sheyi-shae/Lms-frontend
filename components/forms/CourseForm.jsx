@@ -55,7 +55,7 @@ export function CourseForm() {
     } catch (error) {
       const errorMessage = error.response?.data?.message || 
                            "Something went wrong. Please try again.";
-                           console.error(errorMessage)
+                          // console.error(errorMessage)
     }finally {
       setFetching(false)
 
@@ -99,7 +99,7 @@ export function CourseForm() {
       setLoading(true);
       const imageUrl=fileUpload.data.url;
       data={...data, imageUrl}
-      console.log(data)
+      //console.log(data)
 
       const res= await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course`, data, {
         withCredentials: true, 

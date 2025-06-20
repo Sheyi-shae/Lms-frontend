@@ -14,6 +14,7 @@ import Link from "next/link"
 import { toast } from "react-toastify"
 import { useState } from "react"
 import SigninDialog from "./SigninDialog"
+import axios from "axios"
 
 
 
@@ -24,6 +25,7 @@ export default function PublicCourseDetails({ course}) {
      const [isModalOpen, setIsModalOpen] = useState(false)
        const instructorName = course.instructor.name
   const instructorId = course.instructor.id
+  const instructorEmail = course.instructor.email
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,9 +51,9 @@ export default function PublicCourseDetails({ course}) {
     
     try {
       setIsEnrolling(true)
-      await axios.post(
+     await axios.post(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/enroll/course/${course.id}`,
-     {instructorName,instructorId},
+     {instructorName,instructorId,instructorEmail},
         { withCredentials: true }
       )
       toast.success(`Successfully enrolled in course "${course.title}"`)
@@ -165,6 +167,10 @@ export default function PublicCourseDetails({ course}) {
                     Enroll Now
                   </Button>}
                     </span>
+                  ):user.role==='instructor' ? (
+                    <>
+                    
+                    </>
                   ):(
                     <Button onClick={()=>setIsModalOpen(true)} className="w-full mb-4 bg-emerald-600 hover:bg-emerald-700" size="lg">
                       Sign in to Enroll

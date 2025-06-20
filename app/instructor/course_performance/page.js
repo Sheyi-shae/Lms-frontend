@@ -53,7 +53,7 @@ export default function Page() {
         setTotalLessons(res.data.totalLessons)
         
       } catch (err) {
-        console.error("Error fetching courses:", err);
+       // console.error("Error fetching courses:", err);
       } finally {
         setLoading(false); 
       }

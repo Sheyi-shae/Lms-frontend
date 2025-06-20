@@ -64,9 +64,8 @@ export default function Courses({courses}) {
               </div>
 
               <div className="p-6">
-                <Link href={`/courses/${course.id}`}><h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{course.title}</h3></Link>
+                 <Link href={`/courses/${course.id}`}><h3 className="text-base font-semibold line-clamp-2 text-gray-900 dark:text-white mb-2">{course.title.toUpperCase()}</h3></Link>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">by {course.instructor.name}</p>
-
                 <div className="flex items-center gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
                   <div className="flex items-center gap-1">
                     <Star className="w-4 h-4 text-yellow-400 fill-current" />

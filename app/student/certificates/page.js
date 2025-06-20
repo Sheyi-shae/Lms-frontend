@@ -23,7 +23,7 @@ export default function CertificatePage() {
 
       setCertificates(res.data.certificates);
     } catch (error) {
-      console.error("Error fetching certificates:", error);
+      //console.error("Error fetching certificates:", error);
     } finally {
       setLoading(false);
     }

@@ -22,7 +22,7 @@ const [loading, setLoading] = useState(true)
       
       setCategories(response.data.data)
     } catch (error) {
-      console.error("Error fetching categories:", error)
+      //console.error("Error fetching categories:", error)
     } finally {
       setLoading(false)
     }

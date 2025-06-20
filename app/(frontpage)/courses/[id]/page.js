@@ -25,9 +25,9 @@ export default function page() {
           );
           setCourse(res.data.course);
           
-          console.log(res.data.course);
+        
         } catch (err) {
-          console.error("Error fetching course:", err);
+          
         } finally {
           setLoading(false);
         }

@@ -24,7 +24,7 @@ export default function Page() {
         { withCredentials: true }
       );
       setCourse(res.data.course);
-      console.log(res.data.course);
+      //console.log(res.data.course);
     } catch (err) {
       toast.error("Error fetching course data. Please try again later.");
     } finally {
