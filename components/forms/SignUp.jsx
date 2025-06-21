@@ -27,7 +27,7 @@ const formSchema = z
     path: ["confirmPassword"],
   });
 
-export function SignUpForm() {
+export function SignUpForm( { onSuccess }) {
   const [loading, setLoading] = useState(false);
 
   // Initialize useForm with Zod resolver
@@ -51,6 +51,8 @@ export function SignUpForm() {
       setLoading(false); 
       
       toast.success(res.data?.message);
+      if (onSuccess) onSuccess();
+
     
     } catch (error) {
        
