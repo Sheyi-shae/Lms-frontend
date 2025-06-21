@@ -66,7 +66,7 @@ export default function DashboardCourses() {
       <div className="space-y-6">
       {enroll.slice(0,5).map((item,i) => (
         
-        <div key={item.id|| i} className="space-y-8">
+        <div key={item.id|| i} className="line-clamp-1">
           <div className="flex items-center">
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
@@ -112,8 +112,8 @@ export default function DashboardCourses() {
                 <div key={course.id} >
                 
                 <Link href={`/student/coursedetails/${course.id}`} >
-                    <div  className="flex items-center">
-                    <div className="space-y-1">
+                    <div  className="flex items-center line-clamp-1">
+                    <div className="space-y-1 ">
                         <p className="text-sm font-medium leading-none">{course.title}</p>
                         <p className="text-sm text-muted-foreground">{'90'} students</p>
                     </div>
