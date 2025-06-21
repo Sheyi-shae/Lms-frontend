@@ -2,15 +2,17 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Star, Clock, Users } from "lucide-react"
+import { Star,  Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/context/authContext"
 import Link from "next/link"
+import { StudentCourseCard } from "./_studentComponent/StudentCourseCard"
+import { StudentCourseCardSkeleton } from "./CourseCardSkeleton"
 
 
 
-export default function CoursesSection({courses}) {
-  const {loading:userLoading, user} = useAuth()
+export default function CoursesSection({courses,loading}) {
+ 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,6 +33,18 @@ export default function CoursesSection({courses}) {
   }
 
   return (
+    <>
+    {loading ? (
+      <StudentCourseCardSkeleton/>
+    ) : (
+      <>
+        {courses.length === 0 && (
+          <div className="flex items-center justify-center h-64">
+            <p className="text-gray-500 dark:text-gray-300">No courses available at the moment.</p>
+          </div>
+        )}
+      </>
+    )}
     <section id="courses" className="py-2 dark:bg-gray-800 sm:py-8">
       <div className="container  px-4 mx-auto sm:px-6">
         <motion.div
@@ -118,5 +132,6 @@ export default function CoursesSection({courses}) {
         </motion.div>
       </div>
     </section>
+    </>
   )
 }

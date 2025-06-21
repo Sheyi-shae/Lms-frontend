@@ -1,12 +1,11 @@
 "use client"
-import Image from "next/image";
-import Hero from "@/components/Hero";
+
 import HomeTabsContent from "@/components/HomeTabsContent";
-import { useAuth } from "@/context/authContext";
+
 import HeroSection from "@/components/HeroSection";
 import CoursesSection from "@/components/FrontpageCourses";
 import axios from "axios";
-import { use, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 
 
 
@@ -44,7 +43,7 @@ export default function Home() {
     <div className=" min-h-screen">
       
       <HeroSection/>
-      <CoursesSection courses={courses}/>
+      <CoursesSection courses={courses} loading={loading}/>
 
       {/* tabs */}
       <HomeTabsContent course={courses} loading={loading} />
