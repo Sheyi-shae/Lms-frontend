@@ -51,7 +51,7 @@ export function SignUpForm( { onSuccess }) {
       setLoading(false); 
       
       toast.success(res.data?.message);
-      if (onSuccess) onSuccess();
+      onSuccess();
 
     
     } catch (error) {
