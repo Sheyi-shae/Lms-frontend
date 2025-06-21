@@ -50,6 +50,7 @@ export function StudentLessonList({ course}) {
         { withCredentials: true }
       )
       setLessons(res.data.data)
+      
       setEnrollment(res.data.enrollment) 
     } catch (err) {
       toast.error("Error fetching course data. Please try again later.")
@@ -95,6 +96,8 @@ export function StudentLessonList({ course}) {
       )
       toast.success(res.data.message)
       fetchLesson()
+      setSelectedLesson(null)
+      setIsModalOpen(false)
     } catch (error) {
       toast.error(error?.response?.data?.message || "Error marking lesson as complete")
     }finally {
@@ -107,6 +110,8 @@ export function StudentLessonList({ course}) {
       fetchLesson()
     }
   }, [course?.id])
+
+  
 
   return (
     <>
@@ -160,6 +165,7 @@ export function StudentLessonList({ course}) {
                           }`}
                         >
                           {lesson.position}. {lesson.title}
+                          {lesson.isCompleted && <span className="text-green-600">✓</span>}
                         </span>
                         <div className="flex items-center gap-3 text-xs text-muted-foreground">
                           <span>{lesson?.type}</span>
