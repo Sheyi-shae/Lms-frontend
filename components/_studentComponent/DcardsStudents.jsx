@@ -103,7 +103,7 @@ export default function DcardsStudents() {
           {loading ? (
             <div className="animate-pulse bg-gray-300 h-6 w-24 rounded" />
           ) : (
-            <CountUp end={totalLesson} duration={2.5} separator="," />
+            <CountUp end={enroll.completedLessons?.length} duration={2.5} separator="," />
           )}
         </div>
         <p className="text-xs text-muted-foreground">Keep it up!</p>
