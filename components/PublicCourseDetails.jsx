@@ -118,7 +118,7 @@ export default function PublicCourseDetails({ course}) {
                   </Avatar>
                   <div>
                     <p className="font-semibold">{course.instructor.name}</p>
-                    <p className="text-emerald-200 text-sm">{course.instructor.title || 'software dev'}</p>
+                    <p className="text-emerald-200 text-sm">{course.instructor.instructorTitle || 'software dev'}</p>
                   </div>
                 </div>
               </motion.div>

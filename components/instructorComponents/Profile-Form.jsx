@@ -32,6 +32,9 @@ const formSchema = z.object({
     }),
     phone: z.string().optional(),
     avatar: z.string().optional(),
+    instructorTitle: z.string().min(2, {
+        message: "Title be at least 2 characters.",
+    }),
 })
 
 
@@ -173,6 +176,14 @@ export default function ProfileForm({ user }) {
                                  type="number" 
                                  placeholder="Enter your number" 
                                  label="Phone Number"/>
+
+                                {user?.role==='instructor' &&( <TextInput
+                                  form={form} 
+                                 name="instructorTitle" 
+                                 type="text" 
+                                 placeholder="Enter your title" 
+                                 label="Instructor Title"/>)}
+
                         </div>
 
 

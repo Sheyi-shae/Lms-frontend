@@ -67,7 +67,7 @@ export default function MyCourseDetails({ course }) {
                                 <User2 className="h-8 w-8" />
                                 <div>
                                     <p className="text-sm font-medium">{course.instructor?.name || 'seyi'}</p>
-                                    <p className="text-xs text-muted-foreground">{course.instructorTitle || 'Senior Software Developer'}</p>
+                                    <p className="text-xs text-muted-foreground">{course.instructor?.instructorTitle || 'Anonymous'}</p>
                                 </div>
                             </div>
                             <div className="flex items-center">

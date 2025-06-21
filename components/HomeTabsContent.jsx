@@ -37,8 +37,8 @@ export default function HomeTabsContent({course,loading: initialLoading}) {
     return course.filter(course => course.category.name.toLowerCase() === categoryName.toLowerCase());
   };
 
-  const tabs = categories.map((category) => ({
-    title: category.name,
+  const tabs = categories?.map((category) => ({
+    title: category?.name,
     content: (
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">
@@ -62,7 +62,8 @@ export default function HomeTabsContent({course,loading: initialLoading}) {
         <p>Loading categories...</p>
       ) : categories.length > 0 ? (
         <HomeTabs
-          tabClassName="grid w-full grid-cols-2 md:grid-cols-4 lg:w-auto h-16 bg-slate-50"
+          tabClassName="flex overflow-x-auto gap-2 w-full h-16 bg-slate-50 whitespace-nowrap scrollbar-hide"
+
           tabs={tabs}
          
         />

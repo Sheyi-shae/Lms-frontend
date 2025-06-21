@@ -63,7 +63,8 @@ export default function DashboardCourses() {
             <p className="text-sm text-muted-foreground">You haven't enrolled in any course</p>
           </div>
       ): null}
-      {enroll.slice(0,3).map((item,i) => (
+      <div className="space-y-6">
+      {enroll.slice(0,5).map((item,i) => (
         
         <div key={item.id|| i} className="space-y-8">
           <div className="flex items-center">
@@ -86,7 +87,7 @@ export default function DashboardCourses() {
             
         </div>
       ))}
-        
+        </div>
       </CardContent>
     </Card>
     <Card className="col-span-4 md:col-span-3 lg:col-span-3">
@@ -105,7 +106,7 @@ export default function DashboardCourses() {
             <p className="text-sm text-muted-foreground">No courses available</p>
           </div>
         ) : null}
-        <div className="space-y-8">
+        <div className="space-y-6">
             {courses.slice(0,5).map((course) => ( 
                 
                 <div key={course.id} >
