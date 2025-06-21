@@ -22,6 +22,7 @@ import {
 import axios from "axios"
 import { toast } from "react-toastify"
 import { CardContent } from "../ui/card"
+import { AlertTriangle } from "lucide-react";
 
 export function StudentLessonList({ course}) {
   const [lessons, setLessons] = useState([])
@@ -31,6 +32,7 @@ export function StudentLessonList({ course}) {
     const [selectedLesson, setSelectedLesson] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLessonCompleted, setIsLessonCompleted] = useState(false)
+    const [hasError, setHasError] = useState(false);
 
   const instructorName = course.instructor.name
   const instructorId = course.instructor.id
@@ -78,6 +80,12 @@ export function StudentLessonList({ course}) {
       setIsEnrolling(false)
     }
   }
+
+
+
+//toast a message whenever user starts a lesson
+ if(selectedLesson){
+  toast.info('Your lesson has started, please do not close this window')}
 
   //handle video end
   const handleVideoEnd = async (lessonId) => {
@@ -213,16 +221,37 @@ export function StudentLessonList({ course}) {
               <p className="text-sm font-semibold mb-4">Marking lesson as complete...</p>
               </div>
                 )}
-                {selectedLesson && (
-                  <ReactPlayer
-                    url={selectedLesson.videoUrl}
-                    controls
-                    playing
-                    width="100%"
-                    height="100%"
-                    onEnded={() => handleVideoEnd(selectedLesson.id)}
-                  />
-                )}
+                {selectedLesson && !hasError ? (
+  <ReactPlayer
+    url={selectedLesson.videoUrl}
+    controls
+    playing
+    width="100%"
+    height="100%"
+    onEnded={() => handleVideoEnd(selectedLesson.id)}
+    onError={() => setHasError(true)}
+  />
+) : hasError ? (
+  <div className="flex flex-col items-center justify-center h-full bg-red-50 text-red-700 p-6 rounded-md">
+    <AlertTriangle className="w-10 h-10 mb-2" />
+    <p className="text-lg font-semibold">Video failed to load</p>
+    <p className="text-sm text-center text-gray-600 mt-1">
+      This video may be private, unavailable, or the link is broken.
+    </p>
+    <Button
+      variant="outline"
+      className="mt-4"
+      onClick={() => {
+        setHasError(false)
+        setSelectedLesson(null)
+        setIsModalOpen(false)
+      }}
+    >
+      Close & Try Another Lesson
+    </Button>
+  </div>
+) : null}
+
               </div>
             </DialogContent>
           </Dialog>
