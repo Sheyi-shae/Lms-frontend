@@ -83,9 +83,6 @@ export function StudentLessonList({ course}) {
 
 
 
-//toast a message whenever user starts a lesson
- if(selectedLesson){
-  toast.info('Your lesson has started, please do not close this window')}
 
   //handle video end
   const handleVideoEnd = async (lessonId) => {
