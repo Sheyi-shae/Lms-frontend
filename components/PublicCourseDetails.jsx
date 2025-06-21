@@ -156,9 +156,9 @@ export default function PublicCourseDetails({ course}) {
                     <p className="text-sm text-red-600 font-medium">Limited time offer!</p>
                   </div>
 
-                 {!userLoading && user && user.role === 'student' ? (
+                 {!userLoading && user && user?.role === 'student' ? (
                     <span className="text-xs text-gray-500 dark:text-gray-400">
-                      {course.enrollments.some(enrollment => enrollment.studentId === user.id) ?
+                      {course?.enrollments.some(enrollment => enrollment.studentId === user.id) ?
                       <>
                        <Link href={`/student/coursedetails/${course.id}`}><Button
                         className="w-full mb-4 bg-slate-600 hover:bg-slate-700" size="lg">
@@ -167,7 +167,7 @@ export default function PublicCourseDetails({ course}) {
                     Enroll Now
                   </Button>}
                     </span>
-                  ):user.role==='instructor' ? (
+                  ):user?.role==='instructor' ? (
                     <>
                     
                     </>
