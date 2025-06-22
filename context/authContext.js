@@ -22,13 +22,7 @@ export const AuthProvider = ({ children }) => {
       const fetchedUser = res.data.user;
       setUser(fetchedUser);
 
-      // if (!fetchedUser?.isVerified && !hasRedirected.current) {
-      //   hasRedirected.current = true; // ✅ Prevent further triggers
-      //   toast.error("Please verify your email to continue.");
-      //   router.push("/auth/verify-email");
-      // }else{
-      //   router.push("/"); // Redirect to home if user is verified
-      // }
+      
     } catch (error) {
       setUser(null);
     } finally {

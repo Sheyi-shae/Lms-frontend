@@ -69,7 +69,7 @@ export default function SelectInterests({isOpen, setIsOpen}) {
     
   try {
     await axios.put(
-         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/interests`, 
+         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/interests`, 
          { interests: selectedIds }, {withCredentials:true})
          
          toast.success("Your interests have been saved successfully!")

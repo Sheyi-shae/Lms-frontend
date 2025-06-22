@@ -24,7 +24,7 @@ export default function Home() {
   //resposive for showing the interest dialog
  
   useEffect(() => {
-    if (!userLoading && user.isVerified && user.role === "student" && user.selectedInterest === false) {
+    if (!userLoading && user?.isVerified && user?.role === "student" && user?.selectedInterest === false) {
       setIsOpen(true)
     }
   }, [user, userLoading])
@@ -74,7 +74,7 @@ export default function Home() {
       {!userLoading && <SelectInterests isOpen={isOpen} setIsOpen={setIsOpen} />}
 
 
-      {user.selectedInterest && <RecommendedCourses courses={interestCourses} loading={loading} />}
+      {user?.selectedInterest && <RecommendedCourses courses={interestCourses} loading={loading} />}
       <CoursesSection courses={courses} loading={loading}/>
 
       {/* tabs */}
