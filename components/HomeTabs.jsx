@@ -25,7 +25,7 @@ export function HomeTabs({ tabs, defaultValue, className ,tabClassName}) {
         ))}
       </TabsList>
       {tabs.map((tab, index) => (
-        <TabsContent key={tabValues[index]} value={tabValues[index]} className="mt-2 rounded-lg  p-6">
+        <TabsContent key={tabValues[index]} value={tabValues[index]} className="mt-1 rounded-lg  p-6">
           {tab.content}
         </TabsContent>
       ))}

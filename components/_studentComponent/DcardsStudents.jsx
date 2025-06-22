@@ -35,6 +35,7 @@ export default function DcardsStudents() {
     ]);
 
     setEnroll(enrollRes.data.data);
+   
     setTotalLesson(enrollRes.data.totalLessons);
     setCertificate(certRes.data.count);
             
@@ -100,10 +101,18 @@ export default function DcardsStudents() {
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">
+         
           {loading ? (
             <div className="animate-pulse bg-gray-300 h-6 w-24 rounded" />
           ) : (
-            <CountUp end={enroll.completedLessons?.length} duration={2.5} separator="," />
+              <CountUp
+          end={enroll.reduce(
+            (total, course) => total + (course.completedLessons?.length || 0),
+            0
+          )}
+          duration={2.5}
+          separator=","
+        />
           )}
         </div>
         <p className="text-xs text-muted-foreground">Keep it up!</p>

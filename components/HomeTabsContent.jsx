@@ -55,8 +55,8 @@ export default function HomeTabsContent({course,loading: initialLoading}) {
     ),
   }));
   return (
-    <div className="container mx-auto py-10">
-      <h1 className="mb-8 text-3xl font-bold">Trending Courses</h1>
+    <div className="container mx-auto py-4">
+      <h1 className="mb-5 text-3xl font-bold">Trending Courses</h1>
 
       {loading ? (
         <p>Loading categories...</p>
