@@ -43,9 +43,9 @@ export default function Navbar() {
     setIsMenuOpen(false)
     try {
       await logout()
-      toast.success("Successfully logged out")
+     // toast.success("Successfully logged out")
     } catch (error) {
-      toast.error("Failed to logout")
+     // toast.error("Failed to logout")
     } finally {
       setIsLoggingOut(false)
     }
