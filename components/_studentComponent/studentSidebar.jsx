@@ -63,12 +63,12 @@ const StudentSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading }) =>
 
         {/* Sidebar Header */}
         <div className="flex h-16 items-center justify-between border-b px-4">
-          <div className="flex items-center">
+         <Link href={'/'}> <div className="flex items-center">
             <div className="flex h-8 w-8 items-center justify-center rounded bg-red-600">
               <span className="text-lg font-bold text-white">L</span>
             </div>
             {isOpen && <span className="ml-2 text-lg font-semibold">Lucis</span>}
-          </div>
+          </div></Link>
           <button className="hidden rounded-lg p-1 hover:bg-gray-100 md:block" onClick={toggleSidebar}>
             <Menu className="h-5 w-5" />
           </button>
@@ -85,7 +85,7 @@ const StudentSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading }) =>
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -100,7 +100,7 @@ const StudentSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading }) =>
             <ul className="space-y-2">
               {/* Dashboard */}
               <li>
-                <Link href="/student" className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student' ? ' bg-emerald-700 text-white' : '')}>
+                <Link href="/student" onClick={toggleMobileSidebar} className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student' ? ' bg-emerald-700 text-white' : '')}>
                   <Home className="h-5 w-5 text-slate-400 hover:text-slate-500" />
                   {isOpen && <span className="ml-3">Dashboard</span>}
                 </Link>
@@ -108,7 +108,7 @@ const StudentSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading }) =>
 
               {/* courses  */}
                <li>
-                <Link href="/student/courses" className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName.startsWith('/student/cour') ? ' bg-emerald-700 text-white' : '')}>
+                <Link href="/student/courses" onClick={toggleMobileSidebar} className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName.startsWith('/student/cour') ? ' bg-emerald-700 text-white' : '')}>
                   
                   <BookDashed className="h-5 w-5 text-slate-400 hover:text-slate-500" />
                   {isOpen && <span className="ml-3">Browse Courses</span>}
@@ -118,20 +118,20 @@ const StudentSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading }) =>
                  
 
               <li>
-                <Link href="/student/enrollments" className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student/enrollments' ? ' bg-emerald-700 text-white' : '')}>
+                <Link href="/student/enrollments" onClick={toggleMobileSidebar} className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student/enrollments' ? ' bg-emerald-700 text-white' : '')}>
                   <BookCheck className="h-5 w-5 text-slate-400 hover:text-slate-500" />
                   {isOpen && <span className="ml-3">Enrollments</span>}
                 </Link>
               </li>
 
               <li>
-                <Link href="/student/progress_tracker" className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student/progress_tracker' ? ' bg-emerald-700 text-white' : '')}>
+                <Link href="/student/progress_tracker" onClick={toggleMobileSidebar} className={"flex items-center rounded-lg p-2  text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student/progress_tracker' ? ' bg-emerald-700 text-white' : '')}>
                   <TrainTrack className="h-5 w-5 text-slate-400 hover:text-slate-500" />
                   {isOpen && <span className="ml-3">Progress Tracker</span>}
                 </Link>
               </li>
               <li>
-                <Link href="/student/certificates" className={"flex items-center rounded-lg p-2   text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student/certificates' ? ' bg-emerald-700 text-white' : '')}>
+                <Link href="/student/certificates" onClick={toggleMobileSidebar} className={"flex items-center rounded-lg p-2   text-gray-900 hover:bg-emerald-900 hover:text-slate-300" + (pathName === '/student/certificates' ? ' bg-emerald-700 text-white' : '')}>
                   <BookCopy className="h-5 w-5 text-slate-400 hover:text-slate-500" />
                   {isOpen && <span className="ml-3">Certificates</span>}
                 </Link>
@@ -155,17 +155,17 @@ const StudentSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading }) =>
                 {isOpen && expandedMenus.settings && (
                   <ul className="mt-2 space-y-1 pl-11">
                     <li>
-                      <Link href="/student/profile" className={"block rounded-lg p-2 text-gray-900 hover:bg-gray-100" + (pathName === 'instructor/settings/profile' ? ' bg-black text-white' : '')}>
+                      <Link onClick={toggleMobileSidebar} href="/student/profile" className={"block rounded-lg p-2 text-gray-900 hover:bg-gray-100" + (pathName === 'instructor/settings/profile' ? ' bg-black text-white' : '')}>
                         profile
                       </Link>
                     </li>
                     <li>
-                      <Link href="#" className={"block rounded-lg p-2 text-gray-900 hover:bg-gray-100" + (pathName === 'instructor/settings/change_password' ? ' bg-black text-white' : '')}>
+                      <Link href="#" onClick={toggleMobileSidebar} className={"block rounded-lg p-2 text-gray-900 hover:bg-gray-100" + (pathName === 'instructor/settings/change_password' ? ' bg-black text-white' : '')}>
                         Change Password
                       </Link>
                     </li>
                     <li>
-                      <Link href="#" className={"block rounded-lg p-2 text-gray-900 hover:bg-gray-100" + (pathName === 'instructor/settings/account_settings' ? ' bg-black text-white' : '')}>
+                      <Link href="#" onClick={toggleMobileSidebar} className={"block rounded-lg p-2 text-gray-900 hover:bg-gray-100" + (pathName === 'instructor/settings/account_settings' ? ' bg-black text-white' : '')}>
                         Account Settings
                       </Link>
                     </li>

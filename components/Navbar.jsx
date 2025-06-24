@@ -40,6 +40,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     setIsLoggingOut(true)
+    setIsMenuOpen(false)
     try {
       await logout()
       toast.success("Successfully logged out")
@@ -51,7 +52,7 @@ export default function Navbar() {
   }
 
   const popUp = async () => {
-    toast.info("Login as instructor to access this feature ADENIYIEMMANUEL042@GMAIL.COM, 123456789")
+    toast.info("To access this feature ADENIYIEMMANUEL042@GMAIL.COM, 123456789")
   }
 
   const getUserInitials = (name) => {
@@ -65,6 +66,11 @@ export default function Navbar() {
     )
   }
 
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Glassmorphism effect container */}
@@ -73,7 +79,7 @@ export default function Navbar() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0" onClick={()=>setIsMenuOpen(false)}>
               <Link href="/" className="flex items-center">
                 <div className="flex items-center">
                   <div className="flex h-8 w-8 items-center justify-center rounded bg-red-600">
@@ -204,7 +210,24 @@ export default function Navbar() {
             >
               {link.label}
             </Link>
+            
           ))}
+            {user && (
+                <Link 
+                href={user?.role === "student" ? "/student" : "/instructor"}
+                  className={cn(
+                "block px-3 py-2 text-base font-medium text-foreground/80 hover:text-foreground hover:bg-primary/5 rounded-md transition-all",
+                isMenuOpen
+                  ? "opacity-100 translate-x-0 transform transition-all duration-300 ease-out"
+                  : "opacity-0 -translate-x-4 transform transition-all duration-200 ease-in",
+                // Add staggered delay based on index
+                isMenuOpen 
+              )}
+              onClick={() => setIsMenuOpen(false)}
+            >
+                  My Portal
+                </Link>
+              )}
 
           {/* Mobile user section */}
           {user ? (
@@ -249,6 +272,7 @@ export default function Navbar() {
                     "w-full rounded-full transition-all duration-300 transform hover:bg-emerald-800 bg-emerald-700",
                     isMenuOpen ? "scale-100" : "scale-95",
                   )}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   Get Started
                 </Button>

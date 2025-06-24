@@ -60,12 +60,12 @@ const InstructorSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading })
 
         {/* Sidebar Header */}
         <div className="flex h-16 items-center justify-between border-b px-4">
-          <div className="flex items-center">
+          <Link href={'/'}><div className="flex items-center">
             <div className="flex h-8 w-8 items-center justify-center rounded bg-red-600">
               <span className="text-lg font-bold text-white">L</span>
             </div>
             {isOpen && <span className="ml-2 text-lg font-semibold">Lucis</span>}
-          </div>
+          </div></Link>
           <button className="hidden rounded-lg p-1 hover:bg-gray-100 md:block" onClick={toggleSidebar}>
             <Menu className="h-5 w-5" />
           </button>
@@ -94,7 +94,7 @@ const InstructorSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading })
             <ul className="space-y-2">
               {/* Dashboard */}
               <li>
-                <Link href="/instructor" className={"flex items-center rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor' ? ' bg-cyan-700 text-white' : '')}>
+                <Link onClick={toggleMobileSidebar} href="/instructor" className={"flex items-center rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor' ? ' bg-cyan-700 text-white' : '')}>
                   <Home className="h-5 w-5 text-gray-300" />
                   {isOpen && <span className="ml-3">Dashboard</span>}
                 </Link>
@@ -119,12 +119,12 @@ const InstructorSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading })
                   <ul className="mt-2 space-y-1 pl-11">
 
                     <li>
-                      <Link href="/instructor/catalogue/categories" className={"block rounded-lg p-2 hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/catalogue/categories' ? ' bg-cyan-600 text-white' : '')}>
+                      <Link href="/instructor/catalogue/categories" onClick={toggleMobileSidebar} className={"block rounded-lg p-2 hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/catalogue/categories' ? ' bg-cyan-600 text-white' : '')}>
                        Categories
                       </Link>
                     </li>
                     <li>
-                      <Link href="#" className={"block rounded-lg p-2 hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/catalogue/lessons' ? ' bg-cyan-600 text-white' : '')}>
+                      <Link href="#" onClick={toggleMobileSidebar} className={"block rounded-lg p-2 hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/catalogue/lessons' ? ' bg-cyan-600 text-white' : '')}>
                        All Lessons
                       </Link>
                     </li>
@@ -151,17 +151,17 @@ const InstructorSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading })
                 {isOpen && expandedMenus.courses && (
                   <ul className="mt-2 space-y-1 pl-11">
                     <li>
-                      <Link href="/instructor/courses/my_courses" className={"block rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName ==='/instructor/courses/my_courses' ? ' bg-cyan-600 text-white' : '')}>
+                      <Link onClick={toggleMobileSidebar} href="/instructor/courses/my_courses" className={"block rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName ==='/instructor/courses/my_courses' ? ' bg-cyan-600 text-white' : '')}>
                         My Courses
                       </Link>
                     </li>
                     <li>
-                      <Link href="/instructor/courses/create" className={"block rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/courses/create' ? ' bg-cyan-600 text-white' : '')}>
+                      <Link onClick={toggleMobileSidebar} href="/instructor/courses/create" className={"block rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/courses/create' ? ' bg-cyan-600 text-white' : '')}>
                         Create Course
                       </Link>
                     </li>
                     <li>
-                      <Link href="/instructor/course_performance" className={"block rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/course_performance' ? ' bg-cyan-600 text-white' : '')}>
+                      <Link onClick={toggleMobileSidebar} href="/instructor/course_performance" className={"block rounded-lg p-2  hover:text-gray-50 hover:bg-cyan-900" + (pathName === '/instructor/course_performance' ? ' bg-cyan-600 text-white' : '')}>
                         Student Performance
                       </Link>
                     </li>
@@ -189,7 +189,7 @@ const InstructorSidebar = ({ isMobileOpen, toggleMobileSidebar, user, loading })
                 {isOpen && expandedMenus.settings && (
                   <ul className="mt-2 space-y-1 pl-11">
                     <li>
-                      <Link href="/instructor/profile" className={"block rounded-lg p-2 hover:text-gray-50 hover:bg-cyan-900" + (pathName === 'instructor/profile' ? ' bg-cyan-600 text-white' : '')}>
+                      <Link onClick={toggleMobileSidebar} href="/instructor/profile" className={"block rounded-lg p-2 hover:text-gray-50 hover:bg-cyan-900" + (pathName === 'instructor/profile' ? ' bg-cyan-600 text-white' : '')}>
                         profile
                       </Link>
                     </li>

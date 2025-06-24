@@ -32,35 +32,34 @@ export default function Home() {
   
   //fetch all courses from the database
   const fetchCourses = async () => {
-    setLoading(true);
-    try {
-       
-            
-           const [courseRes,interestRes] = await Promise.all([
-     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course/all-courses/public`, {
+  setLoading(true);
+  try {
+    const [courseRes, interestRes] = await Promise.allSettled([
+      axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course/all-courses/public`, {
         withCredentials: true,
       }),
-     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course/interests/courses`, {
+      axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course/interests/courses`, {
         withCredentials: true,
       }),
     ]);
 
-    console.log('interestRes', interestRes.data.data)
-    console.log('courseRes', courseRes.data.course)
-
-    setCourses(courseRes.data.course);
-    setInterestCourses(interestRes.data.data);
-   
-      
+    if (courseRes.status === 'fulfilled') {
+      setCourses(courseRes.value.data.course);
+    } else {
+     // console.error('Failed to fetch all courses:', courseRes.reason);
     }
-    catch (error) {
-    
-    } finally {
-      setLoading(false);
-    }
-    
 
+    if (interestRes.status === 'fulfilled') {
+      setInterestCourses(interestRes.value.data.data);
+    } else {
+     // console.error('Failed to fetch interest-based courses:', interestRes.reason);
+    }
+  } catch (error) {
+    //console.error('Unexpected error:', error);
+  } finally {
+    setLoading(false);
   }
+};
 
 
   useEffect(() => {

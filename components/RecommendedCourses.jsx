@@ -56,7 +56,7 @@ export default function RecommendedCourses({courses,loading}) {
         >
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">Recommended for you</h2>
           <p className="max-w-2xl mx-auto mt-4 text-lg text-gray-600 dark:text-gray-300">
-           We have some recommended courses taught by industry experts and loved by thousands of students for you
+           We have some recommended courses based on your interests 
           </p>
         </motion.div>
 
