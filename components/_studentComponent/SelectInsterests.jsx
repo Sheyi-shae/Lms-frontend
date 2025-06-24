@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -9,14 +9,13 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+
 } from "@/components/ui/dialog"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import axios from "axios"
-import { set } from "react-hook-form"
 import { toast } from "react-toastify"
+import { useAuth } from "@/context/authContext"
 
 
 
@@ -26,6 +25,7 @@ export default function SelectInterests({isOpen, setIsOpen}) {
   const [loadingCategories, setLoadingCategories] = useState(false)
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
+  const   {user}=useAuth()
   
   const [savedCategories, setSavedCategories] = useState([])
 
@@ -66,13 +66,17 @@ export default function SelectInterests({isOpen, setIsOpen}) {
     setLoading(true)
     setSavedCategories(selectedCategories)
      const selectedIds = selectedCategories.map((cat) => cat.id) 
+     
+     
     
   try {
     await axios.put(
-         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/interests`, 
-         { interests: selectedIds }, {withCredentials:true})
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/interests/${user.id}`
+      , {selectedIds}, {
+                withCredentials: true,
+            });
          
-         toast.success("Your interests have been saved successfully!")
+        // toast.success("Your interests have been saved successfully!")
     
     setIsOpen(false)
    
@@ -102,16 +106,16 @@ export default function SelectInterests({isOpen, setIsOpen}) {
     }, [])
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-8 space-y-6 ">
       
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
       
-        <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
+        <DialogContent className="max-w-2xl bg-background/60 backdrop-blur-md max-h-[80vh] overflow-y-scroll flex flex-col">
           <DialogHeader>
             <DialogTitle>Select Your Interests</DialogTitle>
             <DialogDescription>
-              Choose up to 5 categories that interest you. You have selected {selectedCategories.length}/5 categories.
+              Choose up to 5 categories that interest you. These will help us tailor your experience.
             </DialogDescription>
           </DialogHeader>
 
@@ -175,7 +179,7 @@ export default function SelectInterests({isOpen, setIsOpen}) {
               <Button variant="outline" onClick={handleCancel}>
                 Cancel
               </Button>
-              <Button onClick={handleSave} disabled={selectedCategories.length === 0 || loading} className="min-w-[100px]">
+              <Button  onClick={handleSave} disabled={selectedCategories.length === 0 || loading} className="bg-emerald-700 min-w-[100px]">
                 {loading ? "Saving..." : "Save Interests"}
               </Button>
             </div>

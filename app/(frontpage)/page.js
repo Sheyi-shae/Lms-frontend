@@ -40,10 +40,13 @@ export default function Home() {
      axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course/all-courses/public`, {
         withCredentials: true,
       }),
-     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course/interests`, {
+     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/course/interests/courses`, {
         withCredentials: true,
       }),
     ]);
+
+    console.log('interestRes', interestRes.data.data)
+    console.log('courseRes', courseRes.data.course)
 
     setCourses(courseRes.data.course);
     setInterestCourses(interestRes.data.data);
@@ -71,10 +74,11 @@ export default function Home() {
     <div className=" min-h-screen">
       
       <HeroSection/>
-      {!userLoading && <SelectInterests isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {!userLoading && <SelectInterests 
+      isOpen={isOpen} setIsOpen={setIsOpen} />}
 
 
-      {user?.selectedInterest && <RecommendedCourses courses={interestCourses} loading={loading} />}
+      { interestCourses && <RecommendedCourses courses={interestCourses} loading={loading} />}
       <CoursesSection courses={courses} loading={loading}/>
 
       {/* tabs */}
