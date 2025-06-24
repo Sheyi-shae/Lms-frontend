@@ -77,7 +77,7 @@ export default function Home() {
       isOpen={isOpen} setIsOpen={setIsOpen} />}
 
 
-      { interestCourses && <RecommendedCourses courses={interestCourses} loading={loading} />}
+      {user?.selectedInterest && interestCourses && user?.role==='student' && <RecommendedCourses courses={interestCourses} loading={loading} />}
       <CoursesSection courses={courses} loading={loading}/>
 
       {/* tabs */}
